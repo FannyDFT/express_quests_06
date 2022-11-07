@@ -25,6 +25,12 @@ app.get("/api/movies/:id", movieHandlers.getMovieById); // Sélectionne un film 
 app.get("/api/users", usersHandler.getUsers);
 app.get("/api/users/:id", usersHandler.getUsersById);
 
+//Méthode POST (movies)
+app.post("/api/movies", movieHandlers.postMovies);
+
+//Méthode POST (users)
+app.post("/api/users", usersHandler.postUser);
+
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");
