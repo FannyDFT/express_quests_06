@@ -1,6 +1,7 @@
 require("dotenv").config();
 const port = process.env.APP_PORT ?? 5001;
 
+const { application } = require("express");
 const express = require("express");
 
 const app = express();
@@ -37,6 +38,13 @@ app.put("/api/movies/:id", movieHandlers.putMovie);
 //Méthode PUT (users)
 app.put("/api/users/:id", usersHandler.putUsers);
 
+//Méthode DELETE (movies)
+app.delete("/api/movies/:id", movieHandlers.deleteMovies);
+
+//Méthode DELETE (users)
+app.delete("/api/users/:id", usersHandler.deleteUsers);
+
+//Ecoute du port
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");

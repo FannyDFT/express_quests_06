@@ -72,9 +72,29 @@ const putMovie = (req, res) => {
     });
 };
 
+//Méthode DELETE (Suppression id 3)
+const deleteMovies = (req, res) => {
+  const id = parseInt(req.params.id);
+
+  database
+    .query("delete from movies where id = ?", [id])
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.status(404).send("Not Found");
+      } else {
+        res.sendStatus(200);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error saving the movie");
+    });
+};
+
 module.exports = {
   getMovies,
   getMovieById,
   postMovies,
   putMovie,
+  deleteMovies,
 };
