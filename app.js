@@ -1,5 +1,5 @@
 require("dotenv").config();
-const port = process.env.APP_PORT ?? 5000;
+const port = process.env.APP_PORT ?? 5001;
 
 const express = require("express");
 
@@ -30,6 +30,12 @@ app.post("/api/movies", movieHandlers.postMovies);
 
 //Méthode POST (users)
 app.post("/api/users", usersHandler.postUser);
+
+//Méthode PUT (movies)
+app.put("/api/movies/:id", movieHandlers.putMovie);
+
+//Méthode PUT (users)
+app.put("/api/users/:id", usersHandler.putUsers);
 
 app.listen(port, (err) => {
   if (err) {
